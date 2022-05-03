@@ -1,15 +1,17 @@
 #include <iostream>
-#include "individuo.h"
+#include "AG.h"
 
 int main(){
     srand(time(NULL));
-
-    individuo *populacao[10];
-
-    for(int i = 0; i < 10; i++){
-        populacao[i] = new individuo(i, 10, 0, 10);
-        populacao[i]->imprimirIndividuo();
+               
+    populacao *p = new populacao(10, 5, 0, 100, 0.1); //(TAMPOP, TAMIND MINV, MAXV, PROB_MUTACAO);
+    p->imprimirPopulacao();
+    for (size_t i = 0; i < 10; i++){
+        p->getIndividuo(i)->mutacao();
     }
+    cout << "\nMutacao:" << endl;
+    p->imprimirPopulacao();
 
     return 0;
 }
+//TERMINAR O AG
